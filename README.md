@@ -1,6 +1,8 @@
-# VFX Scripting 
+# Bookcase tool
 
-This code is based on Jos Stam’s paper “Real-Time Fluid Dynamics for Games”. This publication presents an easy and quick implementation of a fluid dynamics solver for game engines. The algorithms are based on the Navier-Stokes equations, which are the physical equations of fluid flow.
+This tool allows the user to create customized bookcases. The user will be able to choose the  height, width depth, and levels of the asset. He will also be able to select the amount of books he wants on each level of the bookcase.
+
+The tool works through a UI that th user can customize in order to create his owns models.
 
 ![image](reamde_rsc/Obj.gif)
 
@@ -11,13 +13,11 @@ This code is based on Jos Stam’s paper “Real-Time Fluid Dynamics for Games�
 
 ### Libraries used
 ```
-numpy: pip install numpy
-matplotlib: pip install matplotlib
-ffmpeg: pip install ffmpeg
+PySide2: pip install PySide2
+Shiboken2: pip install shiboken2
 
 ```
-
-In order to use ffmpeg you need to also install the program on your computer. Here are the [instructions](https://www.wikihow.com/Install-FFmpeg-on-Windows) to install it on Windows. 
+The UI was created on QTDesigner. If you want to edit the UI or create your own interface, yo need to [install QTDesigner](https://build-system.fman.io/qt-designer-download) on your computer
 
 
 ### Usage
@@ -123,7 +123,3 @@ This is how each one of them looks:
 
 
 
-
-
-## References:
-This code was based on this [file](https://github.com/gcastillo56/com139-class/blob/master/Fluid_Sim/fluid.py) 
