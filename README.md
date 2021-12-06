@@ -1,10 +1,10 @@
 # Bookcase tool
 
-This tool allows the user to create customized bookcases. The user will be able to choose the  height, width depth, and levels of the asset. He will also be able to select the amount of books he wants on each level of the bookcase.
+This tool allows the user to create customized bookcases in `Autodesk Maya`. The user will be able to choose the  height, width depth, and levels of the asset. He will also be able to select the amount of books he wants on each level of the bookcase.
 
 The tool works through a UI that th user can customize in order to create his owns models.
 
-![image](reamde_rsc/Obj.gif)
+![image](reamde_rsc/gif1.gif)
 
 
 ## Instructions:
@@ -15,7 +15,6 @@ The tool works through a UI that th user can customize in order to create his ow
 ```
 PySide2: pip install PySide2
 Shiboken2: pip install shiboken2
-
 ```
 The UI was created on QTDesigner. If you want to edit the UI or create your own interface, yo need to [install QTDesigner](https://build-system.fman.io/qt-designer-download) on your computer
 
