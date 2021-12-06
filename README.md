@@ -4,7 +4,7 @@ This tool allows the user to create customized bookcases in `Autodesk Maya`. The
 
 The tool works through a UI that th user can customize in order to create his owns models.
 
-![image](reamde_rsc/gif1.gif)
+![image](readme_rsc/gif1.gif)
 
 
 ## Instructions:
