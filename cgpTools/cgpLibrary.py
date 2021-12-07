@@ -63,7 +63,7 @@ class cgpGenerateLibrary(QMainWindow):
 
     def cancel(self):
         """
-        Method for deleting the UI
+        Method for closing the UI
         """
         cmds.deleteUI("MainWindow")
 
@@ -86,6 +86,9 @@ class cgpGenerateLibrary(QMainWindow):
         cgp.createBookcase(getHeight, getWidth, getDepth, getLevels, getMinBooks, getMaxBooks,getShelfHeight, randomHeights, getFixedBookHeight)
     
     def activateRandomHeights(self):
+        '''
+        Method for enable and disable the fixed books height group
+        '''
         global randomHeights
         if self.MainWindowUI.activateRandomHeightsCheckBox.isChecked():            
             randomHeights = True

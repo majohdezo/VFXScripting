@@ -26,7 +26,7 @@ To run this project you need to follow these steps:
 1. Clone or download this repo
 2. Add the `cgpTools` folder inside the path Documents/Maya/scripts/
 3. Open Maya Script Editor
-4. Type the following commands to run:
+4. Type the following lines to run:
 
 ```
 import cgpTools.cgpLibrary as library
@@ -35,7 +35,7 @@ library.runUI()
 ```
 
 5. Run the code
-6. Then, it will open a UI window where you can customise your own bookcase
+6. Then, it will open a UI window where you can customize your own bookcase
 
 
 
@@ -64,7 +64,8 @@ Each bookcase is grouped by shelfs and books. This way the user can manipulate t
 #### Delete models
 
 You can create different bookcases and have all of them placed on the scene. However, if you want to delete a model created, you just need to select it, and when you click on `Create`, it will delete avything selected.
-    
+
+![image](readme_rsc/gif3.gif)
 
 
 
