@@ -1,8 +1,8 @@
 # Bookcase tool
 
-This tool allows the user to create customized bookcases in `Autodesk Maya`. The user will be able to choose the  height, width depth, and levels of the asset. He will also be able to select the amount of books he wants on each level of the bookcase.
+This tool allows the user to create customized bookcases in `Autodesk Maya`. The user will be able to choose the  height, width, depth, and levels of the asset. He will also be able to select the amount of books he wants on each level of the bookcase.
 
-The tool works through a UI that th user can customize in order to create his owns models.
+The tool works through an UI that the user can customize in order to create his owns models.
 
 ![image](readme_rsc/gif1.gif)
 
@@ -21,12 +21,12 @@ The UI was created on QTDesigner. If you want to edit the UI or create your own 
 
 ### Usage
 
-To run this project you need to follow the next steps:
+To run this project you need to follow these steps:
 
 1. Clone or download this repo
 2. Add the `cgpTools` folder inside the path Documents/Maya/scripts/
 3. Open Maya Script Editor
-4. Type to run
+4. Type the following commands to run:
 
 ```
 import cgpTools.cgpLibrary as library
