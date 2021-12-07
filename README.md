@@ -34,11 +34,14 @@ reload(library)
 library.runUI()
 ```
 
-5. Then, it will open a UI window where you can customise your own bookcase
+5. Run the code
+6. Then, it will open a UI window where you can customise your own bookcase
 
 
 
 ### Features
+
+You can insert the height, width and depth you want for the model. You can also add the height you want for the shelfs
 
 
 

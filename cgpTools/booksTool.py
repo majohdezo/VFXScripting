@@ -21,16 +21,18 @@ def createBookcase(_height, _width, _depth, _levels, _minBooks, _maxBooks , _she
     numberOfColors=20
 
     #Get the avarage size of the height and width
-    avarage = (bookcaseHeight + bookcaseWidth) * 0.5
+    avarage = ((bookcaseHeight + bookcaseWidth) * 0.5) / levels
+    avaragePercentage = avarage * 0.5
+    
 
     #Validate shelf height
-    if shelfHeight > avarage * 0.05:
+    if shelfHeight > (avaragePercentage):
         cmds.confirmDialog( title='Confirm', message='Shelf height must be smaller, please enter a valid size', button=['Ok'])
         return
 
     spaceBtwShelfs=(bookcaseHeight / levels) 
 
-    if fixedBookHeight > (spaceBtwShelfs - shelfHeight) * 0.9:
+    if fixedBookHeight > (spaceBtwShelfs - shelfHeight) * 0.9 and not randomHeights:
         cmds.confirmDialog( title='Confirm', message='Book fixed height must be smaller to fit on the bookcase, please enter a valid size', button=['Ok'])
         return
 
