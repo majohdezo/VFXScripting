@@ -67,6 +67,18 @@ You can create different bookcases and have all of them placed on the scene. How
 
 ![image](readme_rsc/gif3.gif)
 
+#### Optional shelf button
+
+This option allows you to have the button added to Maya's UI. This way is easier to have access to the tool.
+
+```
+1. Select the script code in the Script Editor.
+2. In the Script Editor menus, select File > Save Script to Shelf.
+```
+
+![image](readme_rsc/gifBtn.gif)
+
+
 
 
 

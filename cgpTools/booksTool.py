@@ -1,11 +1,21 @@
 import maya.cmds as cmds
-import random  
+import random
 
 #This counter helps to have a control of the bookcases created
 cont = 0
 
 #This list contains the colors combination for the different materials 
 Colors = []
+
+
+def placeShelf(Shelves,name, Xscale, Yscale, Zscale, Xtranslate = 0, Ytranslate =0 ):
+    shelf=cmds.polyCube(n=name)
+    cmds.setAttr( shelf[0]+".scaleX", Xscale)
+    cmds.setAttr( shelf[0]+".scaleY", Yscale )
+    cmds.setAttr( shelf[0]+".scaleZ", Zscale )
+    cmds.setAttr( shelf[0]+".translateX", Xtranslate )
+    cmds.setAttr( shelf[0]+".translateY", Ytranslate )
+    Shelves.append(shelf[0])
 
 def createBookcase(_height, _width, _depth, _levels, _minBooks, _maxBooks , _shelfH, randomHeights, _fixedBookHeight):
     
@@ -54,55 +64,21 @@ def createBookcase(_height, _width, _depth, _levels, _minBooks, _maxBooks , _she
     #Lists that will store each tipe of asset respectively and assigned its name to each group
     Shelves = []
     shelvesName = "shelfs"+str(cont)
-
     Books = []
-    booksName = "books"+str(cont)
-
+    booksName = "books"+str(cont) 
     bookcaseName = "Bookcase"+str(cont)
 
-    #Create and place correctly bottom shelf
-    shelfBottom=cmds.polyCube(n='shelfBottom')
-    cmds.setAttr( shelfBottom[0]+".scaleX", bookcaseWidth)
-    cmds.setAttr( shelfBottom[0]+".scaleY", shelfHeight )
-    cmds.setAttr( shelfBottom[0]+".scaleZ",bookcaseDepth )
-    cmds.setAttr( shelfBottom[0]+".translateY", (shelfHeight / 2) )
-    Shelves.append(shelfBottom[0])
-
-    #Create and place correctly top shelf
-    shelfTop=cmds.polyCube(n='shelfTop')
-    cmds.setAttr( shelfTop[0]+".scaleX", bookcaseWidth)
-    cmds.setAttr( shelfTop[0]+".scaleY", shelfHeight )
-    cmds.setAttr( shelfTop[0]+".scaleZ",bookcaseDepth )
-    cmds.setAttr( shelfTop[0]+".translateY", bookcaseHeight - (shelfHeight / 2) )
-    Shelves.append(shelfTop[0])
-  
+    #Create and place correctly bottom and top shelf
+    placeShelf(Shelves,'shelfBottom',bookcaseWidth, shelfHeight, bookcaseDepth, 0 , (shelfHeight / 2)  )
+    placeShelf(Shelves,'shelfTop',bookcaseWidth, shelfHeight, bookcaseDepth, 0 , bookcaseHeight - (shelfHeight / 2) )
         
     #Create and place correctly inner shelves
     for i in range (1, levels):
-        shelf=cmds.polyCube(n='shelf')
-        cmds.setAttr( shelf[0]+".scaleX", bookcaseWidth)
-        cmds.setAttr( shelf[0]+".scaleY", shelfHeight)
-        cmds.setAttr( shelf[0]+".scaleZ", bookcaseDepth)
-        cmds.setAttr( shelf[0]+".translateY", spaceBtwShelfs * i )
-        Shelves.append(shelf[0])
-
+        placeShelf(Shelves,'shelf',bookcaseWidth, shelfHeight, bookcaseDepth, 0 , spaceBtwShelfs * i  )
     
     #Create and place correctly side shelves  
-    shelfRight=cmds.polyCube(n='shelfRight')
-    cmds.setAttr( shelfRight[0]+".scaleX", shelfHeight)
-    cmds.setAttr( shelfRight[0]+".scaleY", bookcaseHeight )
-    cmds.setAttr( shelfRight[0]+".scaleZ",bookcaseDepth )
-    cmds.setAttr( shelfRight[0]+".translateX", (bookcaseWidth - shelfHeight) / 2 )
-    cmds.setAttr( shelfRight[0]+".translateY", (bookcaseHeight - shelfHeight) / 2 + (shelfHeight * 0.5))
-    Shelves.append(shelfRight[0])
-    
-    shelfLeft=cmds.polyCube(n='shelfLeft')
-    cmds.setAttr( shelfLeft[0]+".scaleX", shelfHeight)
-    cmds.setAttr( shelfLeft[0]+".scaleY", bookcaseHeight )
-    cmds.setAttr( shelfLeft[0]+".scaleZ",bookcaseDepth )
-    cmds.setAttr( shelfLeft[0]+".translateX", - (bookcaseWidth - shelfHeight) / 2 )
-    cmds.setAttr( shelfLeft[0]+".translateY", (bookcaseHeight - shelfHeight) / 2 + (shelfHeight * 0.5))
-    Shelves.append(shelfLeft[0])
+    placeShelf(Shelves,'shelfRight',shelfHeight, bookcaseHeight, bookcaseDepth, (bookcaseWidth - shelfHeight) / 2 , (bookcaseHeight - shelfHeight) / 2 + (shelfHeight * 0.5))
+    placeShelf(Shelves,'shelfLeft',shelfHeight, bookcaseHeight, bookcaseDepth,-(bookcaseWidth - shelfHeight) / 2 , (bookcaseHeight - shelfHeight) / 2 + (shelfHeight * 0.5))
 
     cmds.group( Shelves, n=shelvesName)
     
@@ -114,13 +90,14 @@ def createBookcase(_height, _width, _depth, _levels, _minBooks, _maxBooks , _she
     
     #Set the whole space where the books will be placed
     booksSpace = bookcaseWidth - (2 * shelfHeight)
-     
+
+
     '''Create random colors only once at the beggining'''
     global Colors
     if cont == 1:       
         for x in range (0, numberOfColors):
             color1, color2, color3 = random.uniform(0.0, 1.0), random.uniform(0.0, 1.0), random.uniform(0.0, 1.0)
-            myLambert = cmds.shadingNode( 'lambert', asShader=True)
+            myLambert = cmds.shadingNode( 'lambert', asShader=True, name='M_book'+str(x))
             cmds.setAttr ( (myLambert + '.color'), color1,color2,color3, type = 'double3' )
             Colors.append(myLambert)
 
@@ -175,6 +152,8 @@ def createBookcase(_height, _width, _depth, _levels, _minBooks, _maxBooks , _she
     #If books lenght is equal to cero, it means we don't have books on the bookcase
     else:
         cmds.group( shelvesName, n =bookcaseName)
+
+
  
 
     
